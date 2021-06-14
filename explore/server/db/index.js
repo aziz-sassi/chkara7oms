@@ -2,6 +2,8 @@ const mysql = require('mysql2');
 const createTables = require('./config');
 const Promise = require('bluebird');
 const database = 'chkara7oms';
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const connection = mysql.createConnection({
   user: 'student',
@@ -28,14 +30,16 @@ db.connectAsync()
   createAccount = function (params,callback) {
     let syntax = `INSERT INTO users (username,password,about) VALUES (?,?,?)`;
     connection.query(syntax,params,function (err,result) {
-      console.log(params)
       err ? callback(err,null) : callback(null,result)
     })
     
   }
   getandcompare = function (params,callback) {
-    let syntax = `SELECT username,password FROM users WHERE username = ? AND password = ?`
+    console.log(params);
+    let syntax = `SELECT username,password FROM users WHERE username = ?`
     connection.query(syntax,params,function (err,result) {
+      console.log(result, "result of query")
+
       err ? callback(err,null) : callback(null,result)
 
     })

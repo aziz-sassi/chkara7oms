@@ -9,7 +9,7 @@ module.exports = (db) => {
     CREATE TABLE IF NOT EXISTS users (
       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
       username VARCHAR(255),
-      password VARCHAR(255),
+      password VARCHAR(25),
       about VARCHAR(255)
     );`)
     .error(err => {
