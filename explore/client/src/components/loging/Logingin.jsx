@@ -22,7 +22,7 @@ export default function Logingin(props) {
     }
     return (
         <div>
-            {setTimeout(()=>{console.log(view)},10000)}
+           
            
             {renderstuff()}
         </div>
